@@ -1,6 +1,4 @@
 import axios from 'axios'
-// const baseUrl = 'http://localhost:3001/persons'
-// const baseUrl = 'https://full-stack-open-2024-part3-phonebook.onrender.com/api/persons'
 const baseUrl = '/api/persons'
 
 const getAll = () => {

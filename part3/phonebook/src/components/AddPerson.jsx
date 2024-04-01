@@ -27,7 +27,7 @@ const AddPerson = ({ persons, setPersons, handleNotification }) => {
           if (error.response && error.response.status === 404) {
             handleNotification(`Person ${newName} does not exist`, true);
           } else {
-            handleNotification(`Failed to update person, ${error}`, true);
+            handleNotification(`Failed to update person, ${error.response.data.error}`, true);
           }
         });
     } else {
@@ -44,7 +44,7 @@ const AddPerson = ({ persons, setPersons, handleNotification }) => {
           handleNotification(`Added ${data.name}`);
         })
         .catch(error => {
-          handleNotification(`Failed to add person, ${error}`, true);
+          handleNotification(`Failed to add person, ${error.response.data.error}`, true);
         });
     }
   };
@@ -62,9 +62,9 @@ const AddPerson = ({ persons, setPersons, handleNotification }) => {
       <h2>add a new</h2>
       <form onSubmit={addPerson}>
         <div>
-          name: <input value={newName} onChange={handleNameChange} required/>
+          name: <input value={newName} onChange={handleNameChange}/>
         </div>
-        <div>number: <input value={newNumber} onChange={handleNumberChange} required/></div>
+        <div>number: <input value={newNumber} onChange={handleNumberChange}/></div>
         <div>
           <button type="submit">add</button>
         </div>
